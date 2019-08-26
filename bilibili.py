@@ -36,7 +36,8 @@ def get_word(aid):
 
         with open("./instance/comment.txt", "w", encoding="utf-8") as file:
             for d in d_list:
-                file.write(d.xpath("./text()")[0] + "\n")
+                comment = d.xpath("./text()")[0] + "\n"
+                file.write(comment.strip(" "))
         return True
 
 

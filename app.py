@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, request, redirect, \
     flash, send_from_directory
 
@@ -25,7 +27,21 @@ def show():
 
 @app.route("/download")
 def download():
-    return send_from_directory("static", "bilibili.jpg", as_attachment=True)
+    if os.path.isfile("./static/bilibili.jpg"):
+        return send_from_directory("static", "bilibili.jpg", as_attachment=True)
+    else:
+        flash("你尚未制作词云！")
+        return redirect("/")
+
+@app.route("/comment")
+def comment():
+    if os.path.isfile("./instance/comment.txt"):
+        with open("./instance/comment.txt", mode="r", encoding="utf-8") as f:
+            content = f.read()
+        return render_template("comment.html", content = content)
+    else:
+        flash("你尚未制作词云！")
+        return redirect("/")
 
 if __name__ == "__main__":
     app.run(port=5800, debug=True)
