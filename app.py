@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, \
+    flash, send_from_directory
 
 from bilibili import main
 
@@ -21,6 +22,10 @@ def bilibili():
 @app.route("/show")
 def show():
     return render_template("show.html")
+
+@app.route("/download")
+def download():
+    return send_from_directory("static", "bilibili.jpg", as_attachment=True)
 
 if __name__ == "__main__":
     app.run(port=5800, debug=True)

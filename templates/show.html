@@ -2,8 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='show.css') }}" type="text/css">
     </head>
     <body>
         <img src="{{ url_for('static', filename='bilibili.jpg') }}">
+        <form action="/download">
+            <input type="submit" value="下载词云">
+        </form>
+        <button onclick="window.location='/'">继续制作</button>
     </body>
 </html>
