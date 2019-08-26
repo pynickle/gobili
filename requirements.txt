@@ -3,6 +3,7 @@ lxml
 numpy
 jieba
 wordcloud
+matplotlib
 Pillow
 gunicorn
 flask
