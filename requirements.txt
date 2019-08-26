@@ -4,3 +4,5 @@ numpy
 jieba
 wordcloud
 Pillow
+gunicorn
+flask
