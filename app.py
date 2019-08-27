@@ -3,9 +3,12 @@ import os
 from flask import Flask, render_template, request, redirect, \
     flash, send_from_directory
 
-from bilibili import main
+from src.api import barrage_main, user_main
+
+from src import user_app
 
 app = Flask(__name__, instance_relative_config=True)
+app.register_blueprint(user_app, url_prefix="/user")
 app.config.from_pyfile("config.py")
 
 @app.route("/")
@@ -15,7 +18,7 @@ def index():
 @app.route("/bilibili", methods=["POST"])
 def bilibili():
     aid = request.form.get("aid")
-    res = main(aid)
+    res = barrage_main(aid)
     if not res:
         flash("网址或av码错误！")
         return redirect("/")

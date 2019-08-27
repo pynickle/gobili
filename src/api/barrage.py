@@ -18,6 +18,12 @@ def get_word(aid):
     av = re.match(r"https://www.bilibili.com/video/av(.*)", aid)
     if av:
         aid = av.groups()[0]
+    if not aid.isnumeric():
+        para = aid.split("?", 1)
+        if len(para) == 2 and para[0].isnumeric():
+            aid = para[0]
+        else:
+            return False
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
     }
@@ -66,7 +72,7 @@ def get_ready():
     if os.path.exists("./static/bilibili.jpg"):
         os.remove("./static/bilibili.jpg")
 
-def main(aid):
+def barrage_main(aid):
     get_ready()
     res = get_word(aid)
     if not res:
