@@ -17,6 +17,9 @@ app.config.from_pyfile("config.py")
 def index():
     return render_template("index.html")
 
+@app.route("/help")
+def help():
+    return render_template("help.html")
 
 @app.route("/bilibili", methods=["POST"])
 def bilibili():
