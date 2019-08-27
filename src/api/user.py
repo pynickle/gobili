@@ -43,7 +43,18 @@ def user_main(mid):
     level = get_data_info("level")
     birthday = get_data_info("birthday")
 
-    info = [name, sign, sex, rank, level, birthday, following, follower, view]
+    mid = get_data_info("mid")
+
+    url = f"https://api.bilibili.com/x/web-interface/elec/show?aid={aid}&mid={mid}"
+    r = requests.get(url, headers=headers)
+    data = json.loads(r.content.decode())
+    if data["code"] != 0:
+        return False
+    elec_name = []
+    for i in data["data"]["av_list"]:
+        elec_name.append(i["uname"])
+
+    info = [name, sign, sex, rank, level, birthday, following, follower, view, elec_name]
     return info 
 
 if __name__ == "__main__":

@@ -44,6 +44,7 @@ def video_main(aid):
     share = data["data"]["stat"]["share"]
     like = data["data"]["stat"]["like"]
     dislike = data["data"]["stat"]["dislike"]
+    mid = data["data"]["owner"]["mid"]
 
     url = "https://api.bilibili.com/x/tag/archive/tags?aid=" + aid
     r = requests.get(url, headers=headers)
@@ -54,8 +55,17 @@ def video_main(aid):
     for i in data["data"]:
         tag_name.append(i["tag_name"])
         use.append(i["count"]["use"])
-    
+
+    url = f"https://api.bilibili.com/x/web-interface/elec/show?aid={aid}&mid={mid}"
+    r = requests.get(url, headers=headers)
+    data = json.loads(r.content.decode())
+    if data["code"] != 0:
+        return False
+    elec_name = []
+    for i in data["data"]["av_list"]:
+        elec_name.append(i["uname"])
+
     info = [title, tname, desc, duration, owner, view, danmaku, reply, favorite, \
-    coin, share, like, dislike, tag_name, use]
+    coin, share, like, dislike, tag_name, use, elec_name]
     return info
     

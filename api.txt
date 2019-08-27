@@ -14,3 +14,4 @@
 - https://space.bilibili.com/ajax/settings/getSettings?mid=470680368
 - https://space.bilibili.com/ajax/member/getSubmitVideos?mid=470680368&page=1&pagesize=25
 - https://api.bilibili.com/x/space/acc/info?mid=46622315
+- https://api.bilibili.com/x/web-interface/elec/show?aid=59587415&mid=10558098
