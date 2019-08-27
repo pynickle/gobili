@@ -24,14 +24,14 @@ def user_main(mid):
     following = get_data_info("following")
     follower = get_data_info("follower")
 
-    url = "http://api.bilibili.com/x/space/upstat?mid=" + mid
+    url = f"http://api.bilibili.com/x/space/upstat?mid={mid}"
     r = requests.get(url, headers = headers)
     data = json.loads(r.content.decode())
     if data["code"] != 0:
         return False
     view = data["data"]["archive"]["view"]
 
-    url = "https://api.bilibili.com/x/space/acc/info?mid=" + mid
+    url = f"https://api.bilibili.com/x/space/acc/info?mid={mid}"
     r = requests.get(url, headers = headers)
     data = json.loads(r.content.decode())
     if data["code"] != 0:
@@ -51,7 +51,7 @@ def user_main(mid):
     if data["code"] != 0:
         return False
     elec_name = []
-    for i in data["data"]["av_list"]:
+    for i in data["data"]["list"]:
         elec_name.append(i["uname"])
 
     info = [name, sign, sex, rank, level, birthday, following, follower, view, elec_name]

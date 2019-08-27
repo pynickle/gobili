@@ -11,3 +11,9 @@ input, h1{
 .others{
     margin: 10px;
 }
+.other-part{
+    text-align: center;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}

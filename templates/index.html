@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" type="text/css">
-    </head>
-    <body>
-        {% for msg in get_flashed_messages() %}
-        <p>{{ msg }}</p>
-        {% endfor %}
-        <h1 class="title">哔哩哔哩弹幕词云制作</h1>
-        <form action="/bilibili" method="POST">
-            <input class="input is-info is-rounded" placeholder="输入网址或av码" name="aid">
-            <br>
-            <input class="button is-link is-outlined is-rounded" type="submit">
-        </form>
-        <p>其它功能</p>
-        <button class="others button is-link is-outlined is-rounded" onclick="window.location='/user/ask-id'">哔哩哔哩用户信息查询</button>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" type="text/css">
+</head>
+
+<body>
+    {% for msg in get_flashed_messages() %}
+    <article class="message is-info" id="info">
+        <div class="message-header">
+            <p>消息</p>
+            <button class="delete" aria-label="delete"
+                onclick="document.getElementById('info').style.display = 'none'"></button>
+        </div>
+        <div class="message-body">
+            {{ msg }}
+        </div>
+    </article>
+    {% endfor %}
+    <h1 class="title is-2">哔哩哔哩弹幕词云制作<button class="others button is-link is-outlined is-rounded"
+            onclick="window.location='/help'">帮助</button></h1>
+    <form action="/bilibili" method="POST">
+        <input class="input is-info is-rounded" placeholder="输入网址或av码" name="aid">
         <br>
-        <button class="others button is-link is-outlined is-rounded" onclick="window.location='/video/ask-id'">哔哩哔哩视频信息查询</button>
-        <br>
-        <button class="others button is-link is-outlined is-rounded" onclick="window.location='/help'">帮助</button>
-    </body>
+        <input class="button is-link is-outlined is-rounded" type="submit">
+    </form>
+    <p class="other-part">-- 其它功能 --</p>
+    <button class="others button is-link is-outlined is-rounded"
+        onclick="window.location='/user/ask-id'">哔哩哔哩用户信息查询</button>
+    <br>
+    <button class="others button is-link is-outlined is-rounded"
+        onclick="window.location='/video/ask-id'">哔哩哔哩视频信息查询</button>
+</body>
+
 </html>
