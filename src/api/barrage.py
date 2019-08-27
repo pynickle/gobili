@@ -66,11 +66,13 @@ def make_cloud():
         ).generate(txt)
         image = wc.to_file("./static/bilibili.jpg")
 
+
 def get_ready():
     if os.path.exists("./instance/comment.txt"):
         os.remove("./instance/comment.txt")
     if os.path.exists("./static/bilibili.jpg"):
         os.remove("./static/bilibili.jpg")
+
 
 def barrage_main(aid):
     get_ready()

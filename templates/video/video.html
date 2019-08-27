@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        标题：{{ data[0] }}
+        类别：{{ data[1] }}
+        描述：{{ data[2] }}
+        时长：{{ data[3] }}
+        拥有者：{{ data[4] }}
+        观看数：{{ data[5] }}
+        弹幕数：{{ data[6] }}
+        评论数：{{ data[7] }}
+        收藏数：{{ data[8] }}
+        硬币数：{{ data[9] }}
+        分享数：{{ data[10] }}
+        喜欢数：{{ data[11] }}
+        不喜欢数：{{ data[12] }}
+        {% for i, j in zip(data[13], data[14]) %}
+        标签：{{ i }}
+        使用数：{{ j }}
+        {% endfor %}
+    </body>
+</html>
