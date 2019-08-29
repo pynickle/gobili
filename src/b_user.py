@@ -2,7 +2,7 @@ from flask import Blueprint, flash, render_template, redirect, request
 import requests
 import re
 
-from .api import user_main
+from .api.get_api import user_main
 
 user_app = Blueprint(__name__, "user_app")
 

@@ -2,16 +2,20 @@ import os
 
 from flask import Flask, render_template, request, redirect, \
     flash, send_from_directory
+from flask_restful import Api
 
-from src.api import barrage_main, user_main
-
+from src.api.get_api import barrage_main, user_main
 from src import user_app, video_app
+from src.api import UserApi, VideoApi
 
 app = Flask(__name__, instance_relative_config=True)
 app.register_blueprint(user_app, url_prefix="/user")
 app.register_blueprint(video_app, url_prefix="/video")
 app.config.from_pyfile("config.py")
 
+api = Api(app)
+api.add_resource(UserApi, "/api/user")
+api.add_resource(VideoApi, "/api/video")
 
 @app.route("/")
 def index():

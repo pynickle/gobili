@@ -2,7 +2,7 @@ from flask import Blueprint, flash, render_template, redirect, request
 import requests
 import re
 
-from .api import user_main, video_main
+from .api.get_api import user_main, video_main
 
 video_app = Blueprint(__name__, "video_app")
 
