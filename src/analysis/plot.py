@@ -25,4 +25,5 @@ for i in label:
     percentage.append(data.count(i))
 
 plt.pie(percentage, labels = label)
+plt.title("哔哩哔哩用户性别分析")
 plt.show()
