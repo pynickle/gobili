@@ -89,7 +89,7 @@ for tName in threadList:
     thread.start()
     threads.append(thread)
 
-for i in range(2678, 500000000):
+for i in range(4938, 500000000):
     url = "http://gobili.herokuapp.com/api/user?mid=" + str(i)
     workQueue.put(url)
 
