@@ -78,7 +78,7 @@ def crawler(threadName, q):
     return True
 
 threadList = []
-for i in range(1, 6):
+for i in range(1, 11):
     threadList.append("Thread-" + str(i))
 
 workQueue = queue.Queue(500000000)
@@ -89,7 +89,7 @@ for tName in threadList:
     thread.start()
     threads.append(thread)
 
-for i in range(4938, 500000000):
+for i in range(23064, 500000000):
     url = "http://gobili.herokuapp.com/api/user?mid=" + str(i)
     workQueue.put(url)
 
