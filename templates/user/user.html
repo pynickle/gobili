@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='user/user.css') }}" type="text/css">
     </head>
     <body>
+        <h1>{{ data[0] }}的个人信息</h1>
+        <pre>
         名字：{{ data[0] }}
         简介：{{ data[1] }}
         性别:{{ data[2] }}
@@ -14,5 +16,6 @@
         跟随：{{ data[6] }}
         追随者：{{ data[7] }}
         播放数：{{ data[8] }}
+        </pre>
     </body>
 </html>

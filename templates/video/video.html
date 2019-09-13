@@ -5,19 +5,21 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='video/video.css') }}" type="text/css">
     </head>
     <body>
-        标题：{{ data[0] }}
-        类别：{{ data[1] }}
-        描述：{{ data[2] }}
-        时长：{{ data[3] }}
-        拥有者：{{ data[4] }}
-        观看数：{{ data[5] }}
-        弹幕数：{{ data[6] }}
-        评论数：{{ data[7] }}
-        收藏数：{{ data[8] }}
-        硬币数：{{ data[9] }}
-        分享数：{{ data[10] }}
-        喜欢数：{{ data[11] }}
-        不喜欢数：{{ data[12] }}
+        <h1>{{ data[0] }}的视频信息</h1>
+        <pre>
+        标题：{{ data[0] }} <br>
+        类别：{{ data[1] }} <br>
+        描述：{{ data[2] }} <br>
+        时长：{{ data[3] }} <br>
+        拥有者：{{ data[4] }} <br>
+        观看数：{{ data[5] }} <br>
+        弹幕数：{{ data[6] }} <br>
+        评论数：{{ data[7] }} <br>
+        收藏数：{{ data[8] }} <br>
+        硬币数：{{ data[9] }} <br>
+        分享数：{{ data[10] }} <br>
+        喜欢数：{{ data[11] }} <br>
+        不喜欢数：{{ data[12] }} <br>
         {% for i, j in zip(data[13], data[14]) %}
         标签：{{ i }}
         使用数：{{ j }}
@@ -25,5 +27,6 @@
         {% for i in data[15] %}
         充电人：{{ i }}
         {% endfor %}
+        </pre>
     </body>
 </html>

@@ -46,7 +46,13 @@ class myThread(threading.Thread):
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 }
-
+conn = pymysql.connect(
+        host = "localhost",
+        user = "root", 
+        port = 3306,
+        db = "bilibili"
+    )
+cur = conn.cursor()
 def crawler(threadName, q):
     conn = pymysql.connect(
         host = "localhost",
@@ -72,16 +78,15 @@ def crawler(threadName, q):
     view = data["view"]
     command = f"INSERT INTO bilibili_user VALUES ({mid}, '{birthday}', {follower}, {following}, {level}, {rank}, '{sex}', {view});"
     print(command)
-    conn.ping(reconnect=True)
     cur.execute(command)
     conn.commit()
     return True
 
 threadList = []
-for i in range(1, 11):
+for i in range(1, 4):
     threadList.append("Thread-" + str(i))
 
-workQueue = queue.Queue(500000000)
+workQueue = queue.Queue(30000)
 threads = []
 
 for tName in threadList:
@@ -89,7 +94,7 @@ for tName in threadList:
     thread.start()
     threads.append(thread)
 
-for i in range(23064, 500000000):
+for i in range(30001, 50000):
     url = "http://gobili.herokuapp.com/api/user?mid=" + str(i)
     workQueue.put(url)
 
